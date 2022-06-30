@@ -1,4 +1,6 @@
-with open("ricebowl.txt") as ricebowl:
+with open("ricebowl.txt", 'r') as ricebowl:
     print(ricebowl.read())
 
-print('Welcome Back! What do you wanna do today?\n')
+msg = 'Welcome back! What do you wanna do today?\n'
+
+print(msg)
