@@ -1,6 +1,6 @@
 import random
 
-with open("ricebowl.txt", 'r') as ricebowl:
+with open("ricebowl.txt") as ricebowl:
     print(ricebowl.read())
 
 msg = ( "Welcome back! What do you wanna do today?",
