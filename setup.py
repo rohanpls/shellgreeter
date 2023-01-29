@@ -32,3 +32,6 @@ elif choice == 2:
         
 print(f"\nprompt = {chosen}\n")
 f.write(f"\nprompt = {chosen}\n")
+p = "print(ricebowl+n+prompt+n)"
+print(f"{p}")
+f.write((f"{p}"))
