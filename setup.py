@@ -27,7 +27,8 @@ choice = choiceFunc()
 f = open('ricebowl.py', 'a')
 if choice == 1:
         chosen = gen
-        print(f"\nprompt = {chosen}\n")
 elif choice == 2:
         chosen = hum
-        print(chosen)
+        
+print(f"\nprompt = {chosen}\n")
+f.write(f"\nprompt = {chosen}\n")
