@@ -17,23 +17,25 @@ Script which you can add to your .bashrc or .zshrc for pretty greeting and aesth
 
 ## Requirements
 
-* Any Linux Distribution (Obviously)
+* MacOS / Any Linux Distribution (Obviously)
 * Zsh or Bash Shell (Didn't test other shells but it should work)
+* Python installed
 
 ## Additional ideas / TODO
 
-* Add more greet messages.
-* Add more options other than Ricebowl.
-* Put a shell script to automate the installation
-* Improvise the code to take arguments
-* Maybe generate config file for more customization?
+* ~~Add more greet messages.~~ Done!
+* Add more greet messages again!
+* ~~Add more options other than Ricebowl.~~ Nah, I love ricebowl.
+* ~~ Put a shell script to automate the installation ~~ Done!
+* ~~ Improvise the code to take arguments ~~ 
+* ~~ Generate config file for more customization (?) ~~ Configure terminal color scheme for this
 * Fetches quotes or facts and prints them (?)
 
 ## Installation
 
 ```bash
-# Clone to your home directory or where you won't bother a lot
-$ git clone https://github.com/rohanpls/shellgreeter.git ~/
+# Clone this repo anywhere you want!
+$ git clone https://github.com/rohanpls/shellgreeter.git
 
 # If you use Bash
 $ echo "python3 ~/shellgreeter/greeter.py" >> ~/.bashrc
