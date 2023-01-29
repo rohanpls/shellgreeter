@@ -1,38 +1,56 @@
 # Script installer Init
 # Script by @rohanpls
+import ricebowl
 
-gen = [ "Welcome back! What do you wanna do today?",
+r = open('ricebowl.py', 'r').read()
+
+def withPrompts():
+    gen = [ "Welcome back! What do you wanna do today?",
         "Someone's in a hurry...",
         "Battling some daemons today, are we?"
-    ]
-
-hum = [
+        ]
+    hum = [
         "Debugging: because sometimes your computer needs a good talking to.",
         "I'm not arguing, I'm just explaining why I'm right.",
         "A SQL query walks into a bar and sees two tables. He approaches, and asks 'Can I join you?'",
         "Go on, make the computer do something funny.",
         "press y to execute 'rm -rf /*'",
         ]
+    g = open('greeter.py','a')
+    def choiceFunc():
+        while True:
+            c = int(input("1. Generic prompts\n2. Humor prompts\n\nEnter choice: "))
+            if c in (1,2):
+                return c
+            else:
+                print('\nInvalid choice. Please select an option from the list: ')
 
-def choiceFunc():
-    c = 0
-    while c not in (1,2):
-        c = int(input("1. Generic prompts\n2. Humor prompts\n\nEnter choice: "))
-        if c not in (1,2):
-            print('\nInvalid choice. Please select an option from the list: ')
-    return c
-
-print("Select the prompts you want: ")
-choice = choiceFunc()
-if choice == 1:
+    print("\nSelect the prompts you want: ")
+    choice = choiceFunc()
+    if choice == 1:
         chosen = gen
-elif choice == 2:
+    elif choice == 2:
         chosen = hum
-        
-r = open('ricebowl.py', 'r').read()
-g = open('greeter.py','a')
-g.write(f"{r}\nprompt = {chosen}\n")
-p = "print(choice(prompt)+n)"
-g.write((f"{p}"))
-r.close()
-g.close()
+    g.write(f"{r}\nprompt = {chosen}\n")
+    p = "print(choice(prompt)+n)"
+    g.write((f"{p}"))
+    g.close()
+    return "Success!"        
+
+def standalone():
+    pass
+
+
+print(f"Welcome to ShellGreeter!\nPlease choose your choice of installation: ")
+while True:
+    user_input = int(input("1. Standalone Ricebowl\n2. Ricebowl with Prompts\nEnter your choice: "))
+    if user_input == 1:
+        print("You entered 1")
+        break
+    elif user_input == 2:
+        s = withPrompts()
+        print(s)
+        break
+    else:
+        print("\nInvalid input. Please try again.\n")
+    
