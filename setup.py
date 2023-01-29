@@ -24,14 +24,15 @@ def choiceFunc():
 
 print("Select the prompts you want: ")
 choice = choiceFunc()
-f = open('ricebowl.py', 'a')
 if choice == 1:
         chosen = gen
 elif choice == 2:
         chosen = hum
         
-#print(f"\nprompt = {chosen}\n")
-f.write(f"\nprompt = {chosen}\n")
-p = "print(ricebowl+n+prompt+n)"
-#print(f"{p}")
-f.write((f"{p}"))
+r = open('ricebowl.py', 'r').read()
+g = open('greeter.py','a')
+g.write(f"{r}\nprompt = {chosen}\n")
+p = "print(choice(prompt)+n)"
+g.write((f"{p}"))
+r.close()
+g.close()
