@@ -1,7 +1,15 @@
 # Script installer Init
 # Script by @rohanpls
 import ricebowl
+import os
+import shutil
 
+ddirec = os.path.expanduser("~") + "/shellgreeter"
+dfile = "greeter.py"
+
+if not os.path.exists(ddirec):
+    os.mkdir(ddirec)
+       
 r = open('ricebowl.py', 'r').read()
 
 def withPrompts():
@@ -35,21 +43,24 @@ def withPrompts():
     p = "print(choice(prompt)+n)"
     g.write((f"{p}"))
     g.close()
-    return "Success!"        
+    src = "greeter.py"
+    shutil.copy(src, os.path.join(ddirec, dfile))
+    return "Installation complete! Reload your shell!"        
 
 def standalone():
-    pass
-
+    src = "ricebowl.py"
+    shutil.copy(src, os.path.join(ddirec, dfile))
+    return "Installation complete! Reload your shell!"
+    
 
 print(f"Welcome to ShellGreeter!\nPlease choose your choice of installation: ")
 while True:
     user_input = int(input("1. Standalone Ricebowl\n2. Ricebowl with Prompts\nEnter your choice: "))
     if user_input == 1:
-        print("You entered 1")
+        print(standalone())
         break
     elif user_input == 2:
-        s = withPrompts()
-        print(s)
+        print(withPrompts())
         break
     else:
         print("\nInvalid input. Please try again.\n")
