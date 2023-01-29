@@ -20,11 +20,11 @@ def withPrompts():
     hum = [
         "Debugging: because sometimes your computer needs a good talking to.",
         "I'm not arguing, I'm just explaining why I'm right.",
-        "A SQL query walks into a bar and sees two tables. He approaches, and asks 'Can I join you?'",
+        "A SQL query walks into a bar and sees two tables. \nHe approaches, and asks 'Can I join you?'",
         "Go on, make the computer do something funny.",
         "press y to execute 'rm -rf /*'",
         ]
-    g = open('greeter.py','a')
+    g = open('greeter.py','w')
     def choiceFunc():
         while True:
             c = int(input("1. Generic prompts\n2. Humor prompts\n\nEnter choice: "))
@@ -39,18 +39,18 @@ def withPrompts():
         chosen = gen
     elif choice == 2:
         chosen = hum
-    g.write(f"{r}\nprompt = {chosen}\n")
+    g.write(f"from random import choice\n{r}\nprompt = {chosen}\n")
     p = "print(choice(prompt)+n)"
     g.write((f"{p}"))
     g.close()
     src = "greeter.py"
     shutil.copy(src, os.path.join(ddirec, dfile))
-    return "Installation complete! Reload your shell!"        
+    return "\nInstallation complete! Reload your shell!"        
 
 def standalone():
     src = "ricebowl.py"
     shutil.copy(src, os.path.join(ddirec, dfile))
-    return "Installation complete! Reload your shell!"
+    return "\nInstallation complete! Reload your shell!"
     
 
 print(f"Welcome to ShellGreeter!\nPlease choose your choice of installation: ")
