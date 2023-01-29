@@ -1,4 +1,4 @@
-# Script installer Init
+# Shell Greeter v1.1 - Ricing for your terminal!
 # Script by @rohanpls
 import ricebowl
 import os
@@ -6,6 +6,26 @@ import shutil
 
 ddirec = os.path.expanduser("~") + "/shellgreeter"
 dfile = "greeter.py"
+def check_shell():
+    shell = os.environ.get("SHELL")
+    if shell.endswith("bash"):
+        rc_file = os.path.expanduser("~/.bashrc")
+    elif shell.endswith("zsh"):
+        rc_file = os.path.expanduser("~/.zshrc")
+    elif shell.endswith("fish"):
+        rc_file = os.path.expanduser("~/.config/fish/config.fish")
+    else:
+        rc_file = ""
+        print("Unsupported shell. Please manually configure the installation")
+    return rc_file
+
+rc_file = check_shell()
+
+def updateRC():
+    if rc_file:
+        with open(rc_file, 'a') as f:
+            f.write("\npython3 ~/shellgreeter/greeter.py\n")
+    return "\nInstallation complete! Reload your shell!"
 
 if not os.path.exists(ddirec):
     os.mkdir(ddirec)
@@ -45,15 +65,16 @@ def withPrompts():
     g.close()
     src = "greeter.py"
     shutil.copy(src, os.path.join(ddirec, dfile))
-    return "\nInstallation complete! Reload your shell!"        
+    status = updateRC()
+    return status     
 
 def standalone():
     src = "ricebowl.py"
     shutil.copy(src, os.path.join(ddirec, dfile))
-    return "\nInstallation complete! Reload your shell!"
-    
+    status = updateRC()
+    return status
 
-print(f"Welcome to ShellGreeter!\nPlease choose your choice of installation: ")
+print("Welcome to ShellGreeter!\nPlease choose your choice of installation: ")
 while True:
     user_input = int(input("1. Standalone Ricebowl\n2. Ricebowl with Prompts\nEnter your choice: "))
     if user_input == 1:
