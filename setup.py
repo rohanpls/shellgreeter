@@ -30,8 +30,8 @@ if choice == 1:
 elif choice == 2:
         chosen = hum
         
-print(f"\nprompt = {chosen}\n")
+#print(f"\nprompt = {chosen}\n")
 f.write(f"\nprompt = {chosen}\n")
 p = "print(ricebowl+n+prompt+n)"
-print(f"{p}")
+#print(f"{p}")
 f.write((f"{p}"))
