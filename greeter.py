@@ -1,7 +1,4 @@
-import random
-
-#with open("ricebowl.txt") as ricebowl:
-#    print(ricebowl.read())
+from random import choice
 
 ricebowl = """
                    ░
@@ -25,10 +22,11 @@ ricebowl = """
 
 
 
-msg = ( "Welcome back! What do you wanna do today?",
-        "Ooooooo someone's in a hurry...",
+msg = [ "Welcome back! What do you wanna do today?",
+        "Someone's in a hurry...",
         "Battling some daemons today, are we?",
         "How do you know if someone uses Arch? \n Don't worry, they'll tell you.",
-    )
+    ]
 
-print(ricebowl, '\n' + random.choice(msg) + '\n')
+
+print(ricebowl, '\n' + choice(msg) + '\n')
