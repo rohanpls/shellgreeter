@@ -1,4 +1,3 @@
-from random import choice
 
 ricebowl = """
                    ░
@@ -20,3 +19,4 @@ ricebowl = """
 
 """
 n = "\n"
+print(ricebowl,n)
